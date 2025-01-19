@@ -1,0 +1,6 @@
+<div class="board">
+  <div *ngFor="let column of columns$ | async">
+    <app-column [column]="column"></app-column>
+  </div>
+  <button (click)="addColumn()">+ Add Column</button>
+</div>

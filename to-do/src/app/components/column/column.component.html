@@ -1,0 +1,21 @@
+<div class="column">
+  <h2 class="title">{{ column.title }}</h2>
+  <button (click)="removeColumn()">Remove Column</button>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="column.activities"
+    [cdkDropListConnectedTo]="column.id"
+    class="activity-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-activity
+      *ngFor="let activity of column.activities"
+      [activity]="activity"
+      [columnId]="column.id"
+    ></app-activity>
+  </div>
+  <button (click)="addActivity()" mat-mini-fab matTooltip="Add new activity">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
