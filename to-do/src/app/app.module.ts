@@ -8,24 +8,17 @@ import {ColumnComponent} from './components/column/column.component';
 import {ActivityComponent} from './components/activity/activity.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {HttpClientModule} from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    BoardComponent,
-    ColumnComponent,
-    ActivityComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    DragDropModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        BoardComponent,
+        ColumnComponent,
+        ActivityComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        DragDropModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {
 }
