@@ -3,7 +3,7 @@ import {Column} from '../../models/column.model';
 import {ToDoService} from '../../services/to-do.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {Activity} from "../../models/activity.model";
-import {subscribeOn, take} from "rxjs";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-column',
