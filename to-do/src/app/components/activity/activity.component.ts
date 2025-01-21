@@ -8,5 +8,5 @@ import {Activity} from '../../models/activity.model';
 })
 export class ActivityComponent {
   @Input() activity!: Activity;
-  @Input() columnId!: string;
+  @Input() columnTitle!: string;
 }

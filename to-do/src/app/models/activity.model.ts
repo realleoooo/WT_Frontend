@@ -1,6 +1,7 @@
 export interface Activity {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   category: string;
+  columnTitle: string;
 }

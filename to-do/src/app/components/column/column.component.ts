@@ -3,6 +3,7 @@ import {Column} from '../../models/column.model';
 import {ToDoService} from '../../services/to-do.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {Activity} from "../../models/activity.model";
+import {subscribeOn, take} from "rxjs";
 
 @Component({
   selector: 'app-column',
@@ -16,14 +17,13 @@ export class ColumnComponent {
   }
 
   addActivity(): void {
-    const title = prompt('Enter activity title:');
-    const description = prompt('Enter activity description:');
-    const category = prompt('Enter activity category:');
-    if (title) this.toDoService.addActivity(this.column.id, title, description!, category!);
-  }
-
-  removeColumn(): void {
-    this.toDoService.removeColumn(this.column.id);
+    // const title = prompt('Enter activity title:');
+    // const description = prompt('Enter activity description:');
+    // const category = prompt('Enter activity category:');
+    const activity: Activity = {title: "Hallo", description: "Description", category: "Test", columnTitle: "New"};
+    this.toDoService.addActivity(activity)
+      .pipe(take(1))
+      .subscribe();
   }
 
   drop(event: CdkDragDrop<Activity[]>) {
@@ -43,5 +43,9 @@ export class ColumnComponent {
         event.currentIndex
       );
     }
+  }
+
+  removeColumn() {
+
   }
 }

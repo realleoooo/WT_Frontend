@@ -5,17 +5,16 @@
   <div
     cdkDropList
     [cdkDropListData]="column.activities"
-    [cdkDropListConnectedTo]="column.id"
+    [cdkDropListConnectedTo]="column.title"
     class="activity-list"
     (cdkDropListDropped)="drop($event)"
   >
     <app-activity
       *ngFor="let activity of column.activities"
       [activity]="activity"
-      [columnId]="column.id"
+      [columnTitle]="column.title"
     ></app-activity>
   </div>
   <button (click)="addActivity()" mat-mini-fab matTooltip="Add new activity">
-    <mat-icon>add</mat-icon>
   </button>
 </div>
