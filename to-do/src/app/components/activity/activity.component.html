@@ -1,2 +1,16 @@
-<h1>{{ activity.title }}</h1>
-<p>{{ activity.description }}</p>
+<p-card [style]="{'background':'#3d444d'}">
+  <ng-template #title>
+    <p class="text-white">
+      {{ activity.title }}
+    </p>
+  </ng-template>
+  <p class="text-gray-300">
+    {{ activity.description }}
+  </p>
+  <ng-template #footer>
+    <div class="flex justify-evenly">
+      <p-button [style]="{'border': 'none'}" severity="info" [outlined]="true"><i class="pi pi-pencil"></i></p-button>
+      <p-button [style]="{'border': 'none'}" severity="danger" [outlined]="true"><i class="pi pi-trash"></i></p-button>
+    </div>
+  </ng-template>
+</p-card>

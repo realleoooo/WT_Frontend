@@ -1,20 +1,29 @@
-<div class="column">
-  <h2 class="title">{{ column.title }}</h2>
-  <button (click)="removeColumn()">Remove Column</button>
+<p-card [style]="{'background': '#0d1120', 'width': '42vh', 'height': '100vh', 'border': '1px solid #3d444d'}">
+  <ng-template #title>
+    <p class="text-center text-white">{{ column.title }}</p>
+  </ng-template>
 
-  <div
-    cdkDropList
-    [cdkDropListData]="column.activities"
-    [cdkDropListConnectedTo]="column.title"
-    class="activity-list"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <app-activity
-      *ngFor="let activity of column.activities"
-      [activity]="activity"
-      [columnTitle]="column.title"
-    ></app-activity>
+  <!--  <p-virtualscroller [items]="column.activities" [itemSize]="column.activities.length"-->
+  <!--                     [style]="{ width: '37vh', height: '80vh' }">-->
+  <!--  <ng-template #item let-item>-->
+  <app-activity
+    class="m-28"
+    *ngFor="let activity of column.activities"
+    [activity]="activity"
+    [columnTitle]="column.title"
+  ></app-activity>
+  <!--  </ng-template>-->
+  <!--  </p-virtualscroller>-->
+
+  <div class="card flex justify-center">
+    <p-button (onClick)="addActivity()" [style]="{'border': 'none'}" severity="info" [outlined]="true"><i
+      class="pi pi-plus-circle"></i></p-button>
   </div>
-  <button (click)="addActivity()" mat-mini-fab matTooltip="Add new activity">
-  </button>
-</div>
+  <app-add-activity-modal
+    [isModalOpen]="isModalOpen"
+    [header]="'Add new activity.'"
+    [titleLabel]="'Title'"
+    (modalClosed)="onModalClosed($event)"
+  ></app-add-activity-modal>
+</p-card>
+

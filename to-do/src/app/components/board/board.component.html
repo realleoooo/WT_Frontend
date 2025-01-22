@@ -1,6 +1,6 @@
-<div class="board">
+<div class="flex justify-center gap-5 bg-[#0d1125] h-screen">
   <div *ngFor="let column of columns$ | async">
     <app-column [column]="column"></app-column>
   </div>
-  <button (click)="addColumn()">+ Add Column</button>
+  <p-button (onClick)="addColumn()" [style]="{'border': 'none'}" severity="info" [outlined]="true"><i class="pi pi-plus-circle"></i></p-button>
 </div>

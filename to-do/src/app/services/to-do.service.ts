@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Column} from '../models/column.model';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Activity} from "../models/activity.model";
 
 @Injectable({
@@ -13,11 +13,11 @@ export class ToDoService {
   constructor(private http: HttpClient) {
   }
 
-  getColumns(): Observable<Column[]> {
+  getColumns(): Observable<Column[]>{
     return this.http.get<Column[]>(`${this.url}/columns`);
   }
 
-  addActivity(activity: Activity): Observable<Activity>{
+  addActivity(activity: Activity): Observable<Activity> {
     console.log(activity);
     return this.http.post<Activity>(`${this.url}/activities`, activity);
   }
